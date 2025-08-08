@@ -46,9 +46,9 @@ cd p2p-transaction-relayer-svc
 
 # Create all subdirectories
 mkdir -p ws-signaling-server/src
-mkdir -p tx-endpoint-v1/src
-mkdir -p tx-endpoint-v2/src
-mkdir -p dashboard
+mkdir -p ws-tx-endpoint/src
+mkdir -p wrtc-tx-endpoint/src
+mkdir -p tx-status
 mkdir -p api-gateway/src
 mkdir -p scripts
 ```
@@ -100,11 +100,11 @@ This uses WebSockets with required Signaling Server (SS) to have peers join a ro
 connections on initialization. For P2P services using only WebSockets the Signaling Server is required. For true P2P without the Signaling Server, version 2 (included in the project repo as `tx-endpoint-v2`) uses WebRTC. WebRTS offers channel streams and does NOT need a initiating Signaling Server to group join the peers.
 
 ```shell
-cd ../tx-endpoint-v1
-cargo init --name tx-endpoint-v1 --lib
+cd ../ws-tx-endpoint
+cargo init --name ws-x-endpoint --lib
 ```
 
-The `Cargo.toml` for the tx-endpoint-v1 project is as shown.
+The `Cargo.toml` for the ws-tx-endpoint project is as shown.
 
 ```shell
 [package]
@@ -152,7 +152,7 @@ features = [
 ```
 
 
-## Create React.js D3.js Transaction Events Dash 
+## Create React.js D3.js Transaction Events Status Dash 
 
 ```shell
 cd ../tx-status
@@ -201,15 +201,15 @@ The React.js `dash` project.json file is as shown.
 ## Create Transaction (Tx) Endpoint V2 Project (Rust, Rust Dioxus, WebRTC)
 
 ```shell
-cd ../tx-endpoint-v2
-cargo init --name tx-endpoint-v2 --lib
+cd ../wrtc-tx-endpoint
+cargo init --name wrtc-tx-endpoint --lib
 ```
 
-The cargo.toml for the `tx-endpoint-v2` is as shown.
+The cargo.toml for the `wrtc-tx-endpoint` is as shown.
 
 ```shell
 [package]
-name = "tx-endpoint-v2"
+name = "wrtc-tx-endpoint"
 version = "0.1.0"
 edition = "2021"
 
