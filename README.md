@@ -159,7 +159,40 @@ npm install d3 axios
 npm install -D @types/d3
 ```
 
+The React.js `dash` project.json file is as shown.
 
+```json
+{
+  "name": "p2p-transaction-dashboard",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "start": "vite"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "d3": "^7.8.5",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.1.0",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "vite": "^4.5.0",
+    "@types/d3": "^7.4.3"
+  }
+}
+```
 
 
 
