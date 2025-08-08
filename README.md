@@ -11,14 +11,14 @@ p2p-transaction-relayer-svc-rs/
 │   ├── package.json
 │   └── src/
 │       └── server.js
-├── tx-endpoint/               # Rust Dioxus WASM app
+├── ws-tx-endpoint/               # Rust Dioxus WASM app
 │   ├── Cargo.toml
 │   ├── Dockerfile
 │   └── src/
 │       ├── lib.rs
 │       ├── tx-endpoint.rs
 │       └── p2p-connection.rs
-├── dashboard/                 # React.js, D3.js dashboard
+├── tx-status/                 # React.js, D3.js dashboard
 │   ├── Dockerfile
 │   ├── package.json
 │   └── src/
@@ -155,7 +155,7 @@ features = [
 ## Create React.js D3.js Transaction Events Dash 
 
 ```shell
-cd ../dashboard
+cd ../tx-status
 npm create vite@latest . -- --template react
 npm install
 npm install d3 axios
@@ -166,7 +166,7 @@ The React.js `dash` project.json file is as shown.
 
 ```json
 {
-  "name": "p2p-transaction-dashboard",
+  "name": "p2p-tx-status",
   "private": true,
   "version": "0.0.0",
   "type": "module",
