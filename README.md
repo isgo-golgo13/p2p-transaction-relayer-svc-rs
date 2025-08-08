@@ -94,7 +94,7 @@ anyhow = "1.0"
 ```
 
 
-## Create Transaction (Tx) Endpoint Project (Rust Dioxus, WebSockets w/ SS)
+## Create Transaction (Tx) Endpoint Project (Rust Dioxus, WebSockets)
 
 This uses WebSockets with required Signaling Server (SS) to have peers join a room and initiate the joint
 connections on initialization. For P2P services using only WebSockets the Signaling Server is required. For true P2P without the Signaling Server, version 2 (included in the project repo as `tx-endpoint-v2`) uses WebRTC. WebRTS offers channel streams and does NOT need a initiating Signaling Server to group join the peers.
