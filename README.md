@@ -16,8 +16,8 @@ p2p-transaction-relayer-svc-rs/
 │   ├── Dockerfile
 │   └── src/
 │       ├── lib.rs
-│       ├── tx_endpoint.rs
-│       └── p2p_connection.rs
+│       ├── tx-endpoint.rs
+│       └── p2p-connection.rs
 ├── dashboard/                 # React.js, D3.js dashboard
 │   ├── Dockerfile
 │   ├── package.json
