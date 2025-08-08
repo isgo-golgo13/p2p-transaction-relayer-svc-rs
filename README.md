@@ -94,7 +94,10 @@ anyhow = "1.0"
 ```
 
 
-## Create Transaction (Tx) Endpoint V1 Project (Rust, Rust Dioxus)
+## Create Transaction (Tx) Endpoint V1 Project (Rust, Rust Dioxus, WebSockets w/ SS)
+
+This uses WebSockets with required Signaling Server (SS) to have peers join a room and initiate the joint
+connections on initialization. For P2P services using only WebSockets the Signaling Server is required. For true P2P without the Signaling Server, version 2 (included in the project repo as `tx-endpoint-v2`) uses WebRTC. WebRTS offers channel streams and does NOT need a initiating Signaling Server to group join the peers.
 
 ```shell
 cd ../tx-endpoint-v1
@@ -194,6 +197,61 @@ The React.js `dash` project.json file is as shown.
 }
 ```
 
+
+## Create Transaction (Tx) Endpoint V2 Project (Rust, Rust Dioxus, WebRTC)
+
+```shell
+cd ../tx-endpoint-v2
+cargo init --name tx-endpoint-v2 --lib
+```
+
+The cargo.toml for the `tx-endpoint-v2` is as shown.
+
+```shell
+[package]
+name = "tx-endpoint-v2"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[features]
+default = ["webrtc"]
+webrtc = []
+
+[dependencies]
+dioxus = "0.4"
+dioxus-web = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
+web-sys = { version = "0.3", features = [
+  "console",
+  "WebSocket",
+  "MessageEvent",
+  "CloseEvent",
+  "ErrorEvent",
+  "RtcPeerConnection",
+  "RtcConfiguration",
+  "RtcDataChannel",
+  "RtcDataChannelEvent",
+  "RtcPeerConnectionIceEvent",
+  "RtcSessionDescription",
+  "RtcSessionDescriptionInit",
+  "RtcIceCandidate",
+  "RtcIceCandidateInit",
+  "RtcDataChannelInit",
+  "RtcDataChannelState",
+  "Location",
+  "Window",
+] }
+uuid = { version = "1.0", features = ["v4", "js"] }
+gloo-timers = { version = "0.3", features = ["futures"] }
+futures = "0.3"
+```
 
 
 
