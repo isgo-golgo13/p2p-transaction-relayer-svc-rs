@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>TX Endpoint V1 (WebSocket)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 1.2rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="loading">Loading TX Endpoint...</div>
+    </div>
+    
+    <script type="module">
+        import init, { main } from './pkg/tx_endpoint_v1.js';
+        
+        async function run() {
+            try {
+                await init();
+                main();
+            } catch (error) {
+                console.error('Failed to initialize WASM module:', error);
+                document.getElementById('main').innerHTML = 
+                    '<div class="loading" style="color: red;">Failed to load application</div>';
+            }
+        }
+        
+        run();
+    </script>
+</body>
+</html>

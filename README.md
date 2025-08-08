@@ -149,6 +149,17 @@ features = [
 ```
 
 
+## Create React.js D3.js Transaction Events Dash 
+
+```shell
+cd ../dashboard
+npm create vite@latest . -- --template react
+npm install
+npm install d3 axios
+npm install -D @types/d3
+```
+
+
 
 
 
