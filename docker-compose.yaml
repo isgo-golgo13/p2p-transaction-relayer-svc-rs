@@ -1,0 +1,74 @@
+# docker-compose.v1.yml
+version: '3.8'
+
+services:
+  scylladb:
+    image: scylladb/scylla:5.2
+    container_name: scylladb
+    ports:
+      - "9042:9042"
+      - "9160:9160"
+    volumes:
+      - scylla_data:/var/lib/scylla
+    command: --seeds=scylladb --smp 1 --memory 1G
+
+  ws-signaling-server:
+    build: ./ws-signaling-server
+    container_name: ws-signaling-server
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - scylladb
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "3001:3001"
+    environment:
+      - SCYLLA_HOST=scylladb:9042
+    depends_on:
+      - scylladb
+
+  tx-endpoint-1:
+    build: ./tx-endpoint
+    container_name: tx-endpoint-1
+    ports:
+      - "8000:8000"
+    environment:
+      - ENDPOINT_ID=endpoint-1
+      - SIGNALING_SERVER=ws://ws-signaling-server:8080
+      - API_GATEWAY=http://api-gateway:3001
+    depends_on:
+      - ws-signaling-server
+      - api-gateway
+
+  tx-endpoint-2:
+    build: ./tx-endpoint
+    container_name: tx-endpoint-2
+    ports:
+      - "8001:8000"
+    environment:
+      - ENDPOINT_ID=endpoint-2
+      - SIGNALING_SERVER=ws://ws-signaling-server:8080
+      - API_GATEWAY=http://api-gateway:3001
+    depends_on:
+      - ws-signaling-server
+      - api-gateway
+
+  dashboard:
+    build: ./dashboard
+    container_name: dashboard
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_GATEWAY=http://localhost:3001
+      - REACT_APP_SIGNALING_SERVER=ws://localhost:8080
+    depends_on:
+      - api-gateway
+      - ws-signaling-server
+
+volumes:
+  scylla_data:
