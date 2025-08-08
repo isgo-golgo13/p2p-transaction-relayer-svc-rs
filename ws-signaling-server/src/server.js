@@ -1,14 +1,14 @@
-const WebSocket = require('ws');
-const express = require('express');
-const http = require('http');
-const cors = require('cors');
+import { WebSocketServer } from 'ws';
+import express from 'express';
+import { createServer } from 'http';
+import cors from 'cors';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
+const server = createServer(app);
+const wss = new WebSocketServer({ server });
 
 // Store connected peers
 const peers = new Map();
