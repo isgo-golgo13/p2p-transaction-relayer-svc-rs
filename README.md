@@ -94,7 +94,7 @@ anyhow = "1.0"
 ```
 
 
-## Create Transaction (Tx) Endpoint V1 Project (Rust)
+## Create Transaction (Tx) Endpoint V1 Project (Rust, Rust Dioxus)
 
 ```shell
 cd ../tx-endpoint-v1
