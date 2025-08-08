@@ -121,7 +121,7 @@ fn app(cx: Scope) -> Element {
             if !error_message.is_empty() {
                 div {
                     style: "background: #fee; border: 1px solid #fcc; color: #c33; padding: 10px; border-radius: 8px; margin-bottom: 20px;",
-                    "⚠️ {error_message}"
+                    "{error_message}"
                     button {
                         style: "float: right; background: none; border: none; color: #c33; cursor: pointer;",
                         onclick: move |_| error_message.set("".to_string()),
@@ -140,7 +140,7 @@ fn app(cx: Scope) -> Element {
                     
                     h3 { 
                         style: "margin-top: 0; color: #495057;",
-                        "🔗 Connection Status" 
+                        "Connection Status" 
                     }
                     
                     div {
@@ -183,7 +183,7 @@ fn app(cx: Scope) -> Element {
                     
                     h3 { 
                         style: "margin-top: 0; color: #1565c0;",
-                        "💰 Endpoint Info" 
+                        "Endpoint Info" 
                     }
                     p { 
                         style: "margin: 5px 0; font-size: 1.2rem; font-weight: 600; color: #1976d2;",
@@ -203,7 +203,7 @@ fn app(cx: Scope) -> Element {
                 
                 h3 { 
                     style: "margin-top: 0;",
-                    "💸 Send Transaction" 
+                    "Send Transaction" 
                 }
                 
                 div {
@@ -327,7 +327,7 @@ fn app(cx: Scope) -> Element {
                 
                 h3 { 
                     style: "margin-top: 0; color: #495057;",
-                    "📜 Transaction Log ({transactions.len()})" 
+                    "Transaction Log ({transactions.len()})" 
                 }
                 
                 div {
@@ -369,19 +369,19 @@ fn app(cx: Scope) -> Element {
                                 
                                 p { 
                                     style: "margin: 5px 0; color: #495057;",
-                                    "💰 Amount: ${tx.amount:.2}" 
+                                    "Amount: ${tx.amount:.2}" 
                                 }
                                 p { 
                                     style: "margin: 5px 0; color: #6c757d; font-size: 0.9rem;",
-                                    "🔗 {tx.from} → {tx.to}" 
+                                    "{tx.from} → {tx.to}" 
                                 }
                                 p { 
                                     style: "margin: 5px 0; color: #6c757d; font-size: 0.8rem;",
-                                    "🕐 {format_timestamp(tx.timestamp)}"
+                                    "{format_timestamp(tx.timestamp)}"
                                 }
                                 p { 
                                     style: "margin: 5px 0; color: #6c757d; font-size: 0.8rem; font-family: monospace;",
-                                    "🆔 {tx.id[..8]}..."
+                                    "{tx.id[..8]}..."
                                 }
                             }
                         })
