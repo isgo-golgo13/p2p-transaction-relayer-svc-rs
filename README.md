@@ -72,7 +72,7 @@ cargo init --name api-gateway
 
 The `Cargo.toml` for the api-gateway project is as shown.
 
-```toml
+```shell
 [package]
 name = "api-gateway"
 version = "0.1.0"
@@ -92,6 +92,62 @@ tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 anyhow = "1.0"
 ```
+
+
+## Create Transaction (Tx) Endpoint V1 Project (Rust)
+
+```shell
+cd ../tx-endpoint-v1
+cargo init --name tx-endpoint-v1 --lib
+```
+
+The `Cargo.toml` for the tx-endpoint-v1 project is as shown.
+
+```shell
+[package]
+name = "tx-endpoint-v1"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+dioxus = "0.4"
+dioxus-web = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"
+js-sys = "0.3"
+web-sys = { version = "0.3", features = [
+  "console",
+  "WebSocket",
+  "MessageEvent",
+  "CloseEvent",
+  "ErrorEvent",
+  "Location",
+  "Window",
+  "Document",
+  "Element",
+  "HtmlElement",
+] }
+uuid = { version = "1.0", features = ["v4", "js"] }
+gloo-timers = { version = "0.3", features = ["futures"] }
+futures = "0.3"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+  "console",
+  "WebSocket",
+  "MessageEvent",
+  "CloseEvent",
+  "ErrorEvent",
+  "BinaryType",
+]
+```
+
 
 
 
